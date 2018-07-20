@@ -24,10 +24,13 @@ module.exports = {
     }, 
     delete: (req, res, next) => {
         const dbInstance = req.app.get('db');
-        let id = req.params.id
+        let {id} = req.params;
 
         dbInstance.delete_house(id).then( () => {
-            res.status(200).send(console.log('Deleted that house.'))
+            res.status(200).send(console.log('Successful delete'))
+        })
+        .catch ( (error) => {
+            res.status(500).send(error)
         })
     }
 }   
