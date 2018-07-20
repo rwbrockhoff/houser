@@ -27,3 +27,10 @@ class App extends Component {
 }
 
 export default App;
+
+//--Alter Table Command--//
+
+// alter table houses
+// add img text,
+// add mortgage decimal, 
+// add rent decimal;
