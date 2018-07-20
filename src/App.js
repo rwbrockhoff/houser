@@ -16,7 +16,7 @@ class App extends Component {
 
         <Link to="/"> Dashboard </Link>
 
-        <Link to="/wizard"> Wizard </Link>
+        <Link to="/wizard/StepOne"> Wizard </Link>
 
        
 
