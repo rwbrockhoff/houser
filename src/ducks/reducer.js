@@ -18,6 +18,9 @@ const initialState = {
 const UPDATE_NAME = 'UPDATE_NAME';
 const UPDATE_ADDRESS = 'UPDATE_ADDRESS';
 const UPDATE_CITY = 'UPDATE_CITY';
+const UPDATE_ST = 'UPDATE_ST';
+const UPDATE_ZIP = 'UPDATE_ZIP';
+const UPDATE_IMAGE = 'UPDATE_IMAGE';
 
 
 //-----------//
@@ -30,7 +33,12 @@ export default function reducer(state = initialState, action){
             return Object.assign({}, state, {address: action.payload})
          case UPDATE_CITY :
             return Object.assign({}, state, {city: action.payload})
-       
+        case UPDATE_ST :
+            return Object.assign({}, state, {st: action.payload})
+        case UPDATE_ZIP :
+            return Object.assign({}, state, {zip: action.payload})
+       case UPDATE_IMAGE :
+            return Object.assign({}, state, {imgurl: action.payload})
         default: 
             return state
     }
@@ -56,6 +64,27 @@ export function updateName(name){
                 payload: city
                 }
             }
+
+    export function updateSt(st){
+            return {
+                type: UPDATE_ST,
+                payload: st
+                }
+            }
+
+     export function updateZip(zip){
+            return {
+                type: UPDATE_ZIP,
+                payload: zip
+                }
+            }
+
+    export function updateImg(img){
+        return {
+            type: UPDATE_IMAGE,
+            payload: img
+        }
+    }
 
 
 
