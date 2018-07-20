@@ -18,7 +18,7 @@ massive(process.env.CONNECT).then(dbInstance => {
 
 //---Endpoints----//
 app.get('/api/houses', controller.read);
-app.post('/api/houses', controller.post);
+app.post('/api/house', controller.post);
 
 
 

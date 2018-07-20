@@ -13,7 +13,7 @@ module.exports = {
         const dbInstance = req.app.get('db');
         let {name, address, city, state, zip} = req.body
 
-        dbInstance.post_house().then( () => {
+        dbInstance.post_house(name, address, city, state, zip).then( () => {
             res.status(200).send(console.log('All Good!'))
         })
     }
