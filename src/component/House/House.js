@@ -1,6 +1,8 @@
 import React from 'react';
 
 export default function House(props){
+
+
     return (
         <div>
             
@@ -10,7 +12,7 @@ export default function House(props){
                 <p> State: {props.houseInfo.state} </p>
                 <p> Zip: {props.houseInfo.zip} </p>
 
-                <button> Delete </button>
+                <button onClick={() => {props.deleteHouse(props.id)}}> Delete </button>
         </div>
     )
 }
