@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {stepOneUpdater} from '../../ducks/reducer';
+import {updateName, updateAddress, updateCity} from '../../ducks/reducer';
 
 class StepOne extends Component {
     constructor(){
@@ -12,21 +12,22 @@ class StepOne extends Component {
 
     
     render(){
+        const {updateName, updateAddress} = this.props
         
         return (
             <div>
                 <Link to="/"><button> Cancel </button> </Link>
                 <h4> Property Name </h4>
 
-                <input onChange={(e) => this.setState({name: e.target.value})}/>
+                <input onChange={(e) => updateName({name: e.target.value})}/>
 
                 <h4> Address </h4>
 
-                <input onChange={(e) => this.setState({address: e.target.value})}/>
+                <input onChange={(e) => updateAddress({address: e.target.value})}/>
 
                 <h4 > City </h4> 
 
-                <input onChange={(e) => this.setState({city: e.target.value})}/>
+                <input onChange={(e) => updateCity({city: e.target.value})}/>
 
                 <h4> State </h4> 
 
@@ -36,8 +37,10 @@ class StepOne extends Component {
 
                 <input onChange={(e) => this.setState({zip: e.target.value})}/>
 
-                <button onClick={stepOneUpdater}> <Link to="/wizard/StepTwo"> Next Step </Link> </button> 
+                 <button > <Link to="/wizard/StepTwo"> Next Step </Link> </button> 
             </div>
+
+               
         )
     }
     
@@ -45,7 +48,15 @@ class StepOne extends Component {
 
 function mapStateToProps(state){
     const {name, address, city, st, zip} = state
+
+    return {
+        name,
+        address,
+        city,
+        st,
+        zip
+    }
 }
 
-export default connect(mapStateToProps, {stepOneUpdater})(StepOne)
+export default connect(mapStateToProps, {updateName, updateAddress, updateCity})(StepOne)
 

@@ -15,67 +15,51 @@ const initialState = {
 }
 
 //---constants----//
-const UPDATE_STEP_ONE = 'UPDATE_STEP_ONE';
-const UPDATE_STEP_TWO = 'UPDATE_STEP_TWO';
-const UPDATE_STEP_THREE = 'UPDATE_STEP_THREE';
+const UPDATE_NAME = 'UPDATE_NAME';
+const UPDATE_ADDRESS = 'UPDATE_ADDRESS';
+const UPDATE_CITY = 'UPDATE_CITY';
 
 
 //-----------//
 
 export default function reducer(state = initialState, action){
     switch(action.type){
-        case UPDATE_STEP_ONE :
-            state = { ...state, ...action.payload};
-            return {
-                state
-            }
-        case UPDATE_STEP_TWO :
-            state = { ...state, ...action.payload};
-            return {
-                state
-            }
-        case UPDATE_STEP_THREE :
-            state = { ...state, ...action.payload};
-            return {
-                state
-            }
+        case UPDATE_NAME :
+            return Object.assign({}, state, {name: action.payload})
+        case UPDATE_ADDRESS :
+            return Object.assign({}, state, {address: action.payload})
+         case UPDATE_CITY :
+            return Object.assign({}, state, {city: action.payload})
        
         default: 
             return state
     }
 }
 
-export function stepOneUpdater(name, address, city, st, zip){
+export function updateName(name){
     return {
-        type: UPDATE_STEP_ONE,
-        payload: {
-            name: name,
-            address: address,
-            city: city,
-            st: st,
-            zip: zip
+        type: UPDATE_NAME,
+        payload: name
         }
     }
-}
 
-export function stepTwoUpdater(imgurl){
-    return {
-        type: UPDATE_STEP_TWO,
-        payload: {
-            imgurl: imgurl
+    export function updateAddress(address){
+        return {
+            type: UPDATE_ADDRESS,
+            payload: address
+            }
         }
-    }
-}
 
-export function stepThreeUpdater(monthlyMortgageAmount, monthlyDesiredRent){
-    return {
-        type: UPDATE_STEP_THREE,
-        payload: {
-            monthlyMortgageAmount: monthlyMortgageAmount,
-            monthlyDesiredRent: monthlyDesiredRent
-        }
-    }
-}
+    export function updateCity(city){
+            return {
+                type: UPDATE_CITY,
+                payload: city
+                }
+            }
+
+
+
+
 
 
 
