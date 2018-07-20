@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
+
 
 export default class Wizard extends Component {
     constructor(){
@@ -15,16 +15,22 @@ export default class Wizard extends Component {
         }
     }
 
-    postNewHouse =() => {
+    postNewHouse =() =>{
+        let name = this.state.name
+        let address = this.state.address
+        let city = this.state.city
+        let state = this.state.state
+        let zip = this.state.zip
+
         axios.post('/api/house', 
         {
-            name: this.state.name,
-            address: this.state.address,
-            city: this.state.city,
-            state: this.state.state,
-            zip: this.state.zip
-        } ).then( () => {
-            <Redirect to="/"/>
+            name: name,
+            address: address,
+            city: city,
+            state: state,
+            zip: zip
+        } ).then( (res) => {
+            console.log('received new house')
         })
     }
     render(){
