@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux'
+import {updateMortgage, updateRent} from '../../ducks/reducer';
 
-
-export default class StepThree extends Component {
+class StepThree extends Component {
     constructor(){
         super()
 
@@ -32,16 +33,17 @@ export default class StepThree extends Component {
         })
     }
     render(){
+        const {updateMortgage, updateRent} = this.props
         return (
             <div>
                <Link to="/"><button> Cancel </button> </Link>
                 <h4> Monthly Mortgage Amount </h4>
 
-                <input onChange={(e) => this.setState({monthlyMortgageAmount: e.target.value})}/>
+                <input onChange={(e) => updateMortgage({monthlyMortgageAmount: e.target.value})}/>
 
                 <h4> Desired Monthly Rent </h4>
 
-                <input onChange={(e) => this.setState({monthlyDesiredRent: e.target.value})}/>
+                <input onChange={(e) => updateRent({monthlyDesiredRent: e.target.value})}/>
 
                <button> <Link to="/wizard/StepTwo"> Previous Step </Link> </button>
                 <button onClick={this.postNewHouse}> Complete </button> 
@@ -49,3 +51,14 @@ export default class StepThree extends Component {
         )
     }
 }
+
+function mapStateToProps(state){
+    const {monthlyMortgageAmount, monthlyDesiredRent} = state
+
+    return {
+        monthlyMortgageAmount,
+        monthlyDesiredRent
+    }
+}
+
+export default connect(mapStateToProps, {updateMortgage, updateRent})(StepThree);

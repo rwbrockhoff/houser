@@ -21,6 +21,8 @@ const UPDATE_CITY = 'UPDATE_CITY';
 const UPDATE_ST = 'UPDATE_ST';
 const UPDATE_ZIP = 'UPDATE_ZIP';
 const UPDATE_IMAGE = 'UPDATE_IMAGE';
+const UPDATE_MORTGAGE = 'UPDATE_MORTGAGE';
+const UPDATE_RENT = 'UPDATE_RENT';
 
 
 //-----------//
@@ -39,6 +41,10 @@ export default function reducer(state = initialState, action){
             return Object.assign({}, state, {zip: action.payload})
        case UPDATE_IMAGE :
             return Object.assign({}, state, {imgurl: action.payload})
+        case UPDATE_MORTGAGE :
+            return Object.assign({}, state, {monthlyMortgageAmount: action.payload})
+        case UPDATE_RENT :
+            return Object.assign({}, state, {monthlyDesiredRent: action.payload})
         default: 
             return state
     }
@@ -83,6 +89,20 @@ export function updateName(name){
         return {
             type: UPDATE_IMAGE,
             payload: img
+        }
+    }
+
+    export function updateMortgage(mortgage){
+        return {
+            type: UPDATE_MORTGAGE,
+            payload: mortgage
+        }
+    }
+
+    export function updateRent(rent){
+        return {
+            type: UPDATE_RENT,
+            payload: rent
         }
     }
 
