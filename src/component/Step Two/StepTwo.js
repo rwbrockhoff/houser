@@ -7,21 +7,21 @@ import {updateImg} from '../../ducks/reducer';
 class StepTwo extends Component {
     constructor(){
         super()
-
-        this.state = {
-            imageurl: ''
-        }
+        
+       
     }
 
     
     render(){
         const {updateImg} = this.props
+        const {test} = this.props
+        
         return (
             <div>
                <Link to="/"><button> Cancel </button> </Link>
                 <h4> Image URL </h4>
 
-                <input onChange={(e) => updateImg({imageurl: e.target.value})}/>
+                <input defaultValue={test}onChange={(e) => updateImg({imageurl: e.target.value})}/>
 
                  <button> <Link to="/wizard/StepOne"> Previous Step </Link> </button> 
                 <button> <Link to="/wizard/StepThree"> Next Step </Link> </button> 
@@ -32,6 +32,7 @@ class StepTwo extends Component {
 
 function mapStateToProps(state){
     const {imgurl} = state
+   
 
     return {
         imgurl

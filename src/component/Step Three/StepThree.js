@@ -20,6 +20,7 @@ class StepThree extends Component {
         let city = this.state.city
         let state = this.state.state
         let zip = this.state.zip
+        
 
         axios.post('/api/house', 
         {
@@ -54,7 +55,7 @@ class StepThree extends Component {
 
 function mapStateToProps(state){
     const {monthlyMortgageAmount, monthlyDesiredRent} = state
-
+   
     return {
         monthlyMortgageAmount,
         monthlyDesiredRent

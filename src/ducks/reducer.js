@@ -106,6 +106,10 @@ export function updateName(name){
         }
     }
 
+    export function test(){
+        return this.state.imgurl
+    }
+
 
 
 
